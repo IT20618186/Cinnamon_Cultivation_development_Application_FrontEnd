@@ -1,6 +1,33 @@
-import React from 'react'
+import React, {useState} from "react";
+import axios from "axios";
 
-const Home = () => {
+function Home() {
+    
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+
+    function sendData(e) {
+        
+        e.preventDefault();
+
+        const newContacts ={
+            name,
+            email,
+            subject,
+            message
+        }
+
+        axios.post("http://localhost:8100/contact/Send_contact_details", newContacts).then(()=>{
+            alert("Send to message Succesfully");
+            window.location = "/";
+        }).catch((err)=>{
+            alert(err);
+        })
+    }
+
+
     return (
         <div>
             {/* Sub Header  */}
@@ -334,29 +361,37 @@ const Home = () => {
                         <div class="col-lg-9 align-self-center">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form id="contact" action="" method="post">
+                                    <form id="contact" method="post" onSubmit={sendData}>
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <h2>Let's get in touch</h2>
                                             </div>
                                             <div class="col-lg-4">
                                                 <fieldset>
-                                                    <input name="name" type="text" id="name" placeholder="YOURNAME...*" required="" />
+                                                    <input name="name" type="text" id="name" placeholder="YOURNAME...*" onChange={(e)=>{
+                                                        setName(e.target.value);
+                                                    }} />
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-4">
                                                 <fieldset>
-                                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="YOUR EMAIL..." required="" />
+                                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="YOUR EMAIL..." onChange={(e)=>{
+                                                        setEmail(e.target.value);
+                                                    }} />
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-4">
                                                 <fieldset>
-                                                    <input name="subject" type="text" id="subject" placeholder="SUBJECT...*" required="" />
+                                                    <input name="subject" type="text" id="subject" placeholder="SUBJECT...*" onChange={(e)=>{
+                                                        setSubject(e.target.value);
+                                                    }} />
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-12">
                                                 <fieldset>
-                                                    <textarea name="message" type="text" class="form-control" id="message" placeholder="YOUR MESSAGE..." required=""></textarea>
+                                                    <textarea name="message" type="text" class="form-control" id="message" placeholder="YOUR MESSAGE..." onChange={(e)=>{
+                                                        setMessage(e.target.value);
+                                                    }}></textarea>
                                                 </fieldset>
                                             </div>
                                             <div class="col-lg-12">
