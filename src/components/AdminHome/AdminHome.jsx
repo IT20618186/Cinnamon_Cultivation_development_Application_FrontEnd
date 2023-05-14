@@ -44,7 +44,7 @@ export default class index extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/Admin_Contact">
                                 <i class="fa-solid fa-address-book"></i>
                                 <span class="text">Contact Us</span>
                             </a>
@@ -143,7 +143,7 @@ export default class index extends Component {
                         <div class="table-data">
                             <div class="order">
                                 <div class="head">
-                                    <h3>Recent Orders</h3>
+                                    <h3>Recent Company Orders</h3>
                                     <i class='bx bx-search' ></i>
                                     <i class='bx bx-filter' ></i>
                                 </div>
