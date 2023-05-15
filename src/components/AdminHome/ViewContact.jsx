@@ -41,6 +41,12 @@ function ViewContact() {
                             <span class="text">Entrepreneurs</span>
                         </a>
                     </li>
+                    <li>
+                            <a href="#">
+                                <i class="fa-solid fa-diamond fa-beat"></i>
+                                <span class="text">Blogs</span>
+                            </a>
+                        </li>
                     <li class="active">
                         <a href="#">
                             <i class="fa-solid fa-address-book"></i>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function AddBlogPost() {
-  return (
-    <div>
+export default function UpdateBlogPost() {
+    return (
         <div>
+            <div>
                 {/* <!-- SIDEBAR --> */}
                 <section id="sidebar">
                     <a href="#" class="brand">
@@ -13,7 +13,7 @@ export default function AddBlogPost() {
                     <ul class="side-menu top">
                         <li>
                             <a href="#">
-                                <i class="fa-solid fa-gauge fa-beat"></i>
+                                <i class="fa-solid fa-gauge"></i>
                                 <span class="text">Dashboard</span>
                             </a>
                         </li>
@@ -43,7 +43,7 @@ export default function AddBlogPost() {
                         </li>
                         <li class="active">
                             <a href="#">
-                            <i class="fa-solid fa-diamond"></i>
+                                <i class="fa-solid fa-diamond  fa-beat"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
@@ -77,9 +77,9 @@ export default function AddBlogPost() {
                 <section id="content">
                     {/* <!-- NAVBAR --> */}
                     <nav>
-                        <a href="#" class="nav-link">New Post</a>
-                        <a href="#" class="nav-link">Post Data</a>
-                        <a href="#" class="nav-link">User Feedback</a>
+                        <a href="/AddBlog" class="nav-link">New Post</a>
+                        <a href="/view_post" class="nav-link">Post Data</a>
+                        <a href="/user_feedback" class="nav-link">User Feedback</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." />
@@ -113,7 +113,7 @@ export default function AddBlogPost() {
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">New Post</a>
+                                        <a class="active" href="#">Update Post</a>
                                     </li>
                                 </ul>
                             </div>
@@ -121,7 +121,7 @@ export default function AddBlogPost() {
 
                         <div class="d-flex justify-content-center mt-3" >
                             <div className="p-5 rounded" style={{ backgroundColor: '#F0B856' }}>
-                                <h1 className='text-center'>Add Post</h1>
+                                <h1 className='text-center'>Update Existing Post</h1>
                                 <form className='mt-5'>
                                     <form class="row g-3">
                                         <div class="col-md-6">
@@ -134,18 +134,18 @@ export default function AddBlogPost() {
                                         </div>
                                         <div class="col-12">
                                             <label for="inputReason" class="form-label">Reasons :</label>
-                                            <textarea type="textarea" class="form-control" id="exampleFormControlTextarea1" placeholder="......" rows="3"/>
+                                            <textarea type="textarea" class="form-control" id="exampleFormControlTextarea1" placeholder="......" rows="3" />
                                         </div>
                                         <div class="col-12">
                                             <label for="inputTreatments" class="form-label">Treatments :</label>
-                                            <textarea type="textarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Write a value Treatments...." rows="3"/>
+                                            <textarea type="textarea" class="form-control" id="exampleFormControlTextarea1" placeholder="Write a value Treatments...." rows="3" />
                                         </div>
                                         <div class="col-12">
                                             <label for="formFileMultiple" class="form-label">Related Image :</label>
                                             <input class="form-control" type="file" id="formFileMultiple" multiple />
                                         </div>
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-success">Save</button>
+                                            <button type="submit" class="btn btn-info">Update data</button>
                                         </div>
                                     </form>
                                 </form>
@@ -156,6 +156,6 @@ export default function AddBlogPost() {
                 </section>
                 {/* <!-- CONTENT --> */}
             </div>
-    </div>
-  )
+        </div>
+    )
 }

@@ -44,6 +44,12 @@ export default class index extends Component {
                             </a>
                         </li>
                         <li>
+                            <a href="#">
+                                <i class="fa-solid fa-diamond fa-beat"></i>
+                                <span class="text">Blogs</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="/Admin_Contact">
                                 <i class="fa-solid fa-address-book"></i>
                                 <span class="text">Contact Us</span>

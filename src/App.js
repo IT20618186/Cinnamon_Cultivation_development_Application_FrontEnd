@@ -3,7 +3,9 @@ import Home from "./components/Home";
 import AdminHome from "./components/AdminHome/AdminHome";
 import AddContact from "./components/AdminHome/AddContact";
 import ViewContact from "./components/AdminHome/ViewContact";
-import AddBlogPost from "./components/Estate_Owners_Handling/AddBlogPost";
+import ViewBlogPost from "./components/Blog_About_Diseases/ViewBlogPost";
+import AddBlogPost from "./components/Blog_About_Diseases/AddBlogPost";
+import UpdateBlogPost from "./components/Blog_About_Diseases/UpdateBlogPost";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Route path="/AdminHome" exact element={<AdminHome/>}/>
       <Route path="/AddContact" exact element={<AddContact/>}/>
       <Route path="/Admin_Contact" exact element={<ViewContact/>}/>
-      <Route path="/AddBlog" element={<AddBlogPost/>}></Route>
+      <Route path="/AddBlog" element={<AddBlogPost/>}/>
+      <Route path="/view_post" element={<ViewBlogPost/>}/>
+      <Route path="/update_post" element={<UpdateBlogPost/>}/>
     </Routes>
   );
 }
