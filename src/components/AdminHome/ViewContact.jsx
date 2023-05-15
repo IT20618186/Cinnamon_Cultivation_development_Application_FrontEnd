@@ -49,7 +49,7 @@ function ViewContact() {
                         </li>
                     <li class="active">
                         <a href="#">
-                            <i class="fa-solid fa-address-book"></i>
+                            <i class="fa-solid fa-address-book fa-beat"></i>
                             <span class="text">Contact Us</span>
                         </a>
                     </li>
