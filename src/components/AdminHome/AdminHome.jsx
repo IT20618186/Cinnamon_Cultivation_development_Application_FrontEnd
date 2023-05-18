@@ -20,7 +20,7 @@ export default class index extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/Bank_Loan_Details">
                                 <i class="fa-solid fa-dollar-sign"></i>
                                 <span class="text">Bank Loan</span>
                             </a>
@@ -32,19 +32,19 @@ export default class index extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/VSO_List">
                                 <i class="fa-solid fa-people-roof"></i>
                                 <span class="text">VSO</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/Veiw_Blogs">
                                 <i class="fa-solid fa-diamond"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="Report_Generate_Home">
                                 <i class="fa-solid fa-users"></i>
                                 <span class="text">Reports</span>
                             </a>

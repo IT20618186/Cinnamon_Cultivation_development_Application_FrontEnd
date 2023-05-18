@@ -8,65 +8,65 @@ class EditBank extends Component {
             <div>
                 <div>
                     {/* <!-- SIDEBAR --> */}
-                    <section id="sidebar">
-                        <a href="#" class="brand">
-                            <i class="fa-brands fa-slack fa-flip"></i>
-                            <span class="text">CINNAMON</span>
-                        </a>
-                        <ul class="side-menu top">
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-gauge "></i>
-                                    <span class="text">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="#">
-                                    <i class="fa-solid fa-briefcase fa-beat"></i>
-                                    <span class="text">Banks</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-dollar-sign"></i>
-                                    <span class="text">Loan Apply</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-leaf"></i>
-                                    <span class="text">Estate Owners</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-users"></i>
-                                    <span class="text">Entrepreneurs</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-address-book"></i>
-                                    <span class="text">Contact Us</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="side-menu">
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-gear"></i>
-                                    <span class="text">Settings</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="logout">
-                                    <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
-                                    <span class="text">Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </section>
-                    {/* <!-- SIDEBAR --> */}
+                <section id="sidebar">
+                    <a href="#" class="brand">
+                        <i class="fa-brands fa-slack fa-flip"></i>
+                        <span class="text">CINNAMON</span>
+                    </a>
+                    <ul class="side-menu top">
+                        <li class="active">
+                            <a href="/AdminHome">
+                            <i class="fa-solid fa-gauge fa-beat"></i>
+                                <span class="text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Bank_Loan_Details">
+                                <i class="fa-solid fa-dollar-sign"></i>
+                                <span class="text">Bank Loan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Bank_Reg_Details">
+                                <i class="fa-solid fa-briefcase"></i>
+                                <span class="text">Banks</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/VSO_List">
+                                <i class="fa-solid fa-people-roof"></i>
+                                <span class="text">VSO</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Veiw_Blogs">
+                                <i class="fa-solid fa-diamond"></i>
+                                <span class="text">Blogs</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Report_Generate_Home">
+                                <i class="fa-solid fa-users"></i>
+                                <span class="text">Reports</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="side-menu">
+                        <li>
+                            <a href="#">
+                                <i class="fa-solid fa-gear"></i>
+                                <span class="text">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="logout">
+                                <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
+                                <span class="text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                {/* <!-- SIDEBAR --> */}
 
 
 
@@ -76,7 +76,7 @@ class EditBank extends Component {
                         <nav>
                             <a href="/Bank_Reg_Details" class="nav-link">Bank Details Registration</a>
                             <a href="/All_Branches_Details" class="nav-link">View Bank Details</a>
-                            
+
                             <form action="#">
                                 <div class="form-input">
                                     <input type="search" placeholder="Search..." />
