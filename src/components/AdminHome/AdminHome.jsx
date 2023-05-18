@@ -14,33 +14,27 @@ export default class index extends Component {
                     </a>
                     <ul class="side-menu top">
                         <li class="active">
-                            <a href="#">
+                            <a href="/AdminHome">
                             <i class="fa-solid fa-gauge fa-beat"></i>
                                 <span class="text">Dashboard</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
+                                <i class="fa-solid fa-dollar-sign"></i>
+                                <span class="text">Bank Loan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Bank_Reg_Details">
                                 <i class="fa-solid fa-briefcase"></i>
                                 <span class="text">Banks</span>
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa-solid fa-dollar-sign"></i>
-                                <span class="text">Loan Apply</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-leaf"></i>
-                                <span class="text">Estate Owners</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-users"></i>
-                                <span class="text">Entrepreneurs</span>
+                                <i class="fa-solid fa-people-roof"></i>
+                                <span class="text">VSO</span>
                             </a>
                         </li>
                         <li>
@@ -50,9 +44,9 @@ export default class index extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/Admin_Contact">
-                                <i class="fa-solid fa-address-book"></i>
-                                <span class="text">Contact Us</span>
+                            <a href="#">
+                                <i class="fa-solid fa-users"></i>
+                                <span class="text">Reports</span>
                             </a>
                         </li>
                     </ul>
@@ -79,17 +73,15 @@ export default class index extends Component {
                 <section id="content">
                     {/* <!-- NAVBAR --> */}
                     <nav>
-                        <a href="#" class="nav-link">Categories</a>
-                        <a href="#" class="nav-link">Categories</a>
-                        <a href="#" class="nav-link">Categories</a>
+                        <a href="/" class="nav-link">Home Website</a>
+                        <a href="/Admin_Contact" class="nav-link">Contact Us</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." />
                                 <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
                             </div>
                         </form>
-                        {/* <input type="checkbox" id="switch-mode" hidden />
-                        <label for="switch-mode" class="switch-mode"></label> */}
+                        
                         <a href="#" class="notification">
                             <i class='bx bxs-bell' ></i>
                             <span class="num">10</span>
@@ -107,12 +99,12 @@ export default class index extends Component {
                                 <h1>Dashboard</h1>
                                 <ul class="breadcrumb">
                                     <li>
-                                        <a href="#">Dashboard</a>
+                                        <a href="/AdminHome">Dashboard</a>
                                     </li>
-                                    <li><i class='bx bx-chevron-right' ></i></li>
+                                    {/* <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">Home</a>
-                                    </li>
+                                        <a class="active" href="/">Home</a>
+                                    </li> */}
                                 </ul>
                             </div>
                             <a href="#" class="btn-download">

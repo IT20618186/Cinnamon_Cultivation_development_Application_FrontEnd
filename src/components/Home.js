@@ -42,10 +42,10 @@ function Home() {
                         <div class="col-lg-4 col-sm-4">
                             <div class="right-icons">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://www.srilankabusiness.com/spices/about/cinnamon-cultivation-sri-lanka.html"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://www.srilankabusiness.com/spices/about/cinnamon-cultivation-sri-lanka.html"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://www.srilankabusiness.com/spices/about/cinnamon-cultivation-sri-lanka.html"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="https://www.srilankabusiness.com/spices/about/cinnamon-cultivation-sri-lanka.html"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,20 +67,12 @@ function Home() {
                                 {/* ***** Menu Start ***** */}
                                 <ul class="nav">
                                     <li class="scroll-to-section"><a href="#bg-video" class="active">Home</a></li>
-                                    <li class="scroll-to-section"><a href="">About</a></li>
+                                    <li class="scroll-to-section"><a href="/about-cinnamon">About</a></li>
                                     <li class="scroll-to-section"><a href="#meetings">Cinnamon Product</a></li>
                                     <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
-                                    <li class="has-sub">
-                                        <a href="javascript:void(0)">Join us</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">SignUp</a></li>
-                                            <li><a href="">SignIn</a></li>
-                                        </ul>
-                                    </li>
+                                    <li class="scroll-to-section"><a href="/login">Join us</a></li>
                                 </ul>
-                                <a class='menu-trigger'>
-                                    <span>Menu</span>
-                                </a>
+                                
                                 {/* ***** Menu End ***** */}
                             </nav>
                         </div>
@@ -104,7 +96,7 @@ function Home() {
                                     <h2>Welcome to CINNAMON</h2>
                                     <p>Thank you to all of you who have come together to promote the local cinnamon trade and cultivation. Basic facilities are provided for all the services availed by this.</p>
                                     <div class="main-button-red">
-                                        <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
+                                        <div class=""><a href="/login">Join Us Now!</a></div>
                                     </div>
                                 </div>
                             </div>
