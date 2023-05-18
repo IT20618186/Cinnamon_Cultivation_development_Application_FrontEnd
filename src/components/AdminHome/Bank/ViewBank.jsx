@@ -84,7 +84,7 @@ export default class ViewBank extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/Bank_Reg_Details">
+                            <a href="/All_Branches_Details">
                                 <i class="fa-solid fa-briefcase"></i>
                                 <span class="text">Banks</span>
                             </a>

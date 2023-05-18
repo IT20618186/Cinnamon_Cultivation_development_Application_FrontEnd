@@ -221,8 +221,8 @@ export default function AddBank() {
                                                     <textarea type="text" class="form-control" id="inputText" name='historyOfBank' rows="2" value={historyOfBank} onChange={(e) =>{setHistoryOfBank(e.target.value);}}/>
                                                 </div>
                                                 <div class="col-12">
-                                                    <button type="submit" class="btn btn-success">Register Banks</button>
-                                                    <button onClick={()=>{demofill()}} className="btn btn-info">DEMO</button>
+                                                    <button type="submit" class="btn btn-success">Register Bank</button>
+                                                    <button onClick={()=>{demofill()}} className="btn btn-info ml-3">DEMO</button>
                                                 </div>
                                             {/* </form> */}
                                         </form>

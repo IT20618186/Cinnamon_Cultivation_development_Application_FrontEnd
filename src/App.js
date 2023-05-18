@@ -12,6 +12,8 @@ import SignUp from "./components/SignUp";
 import AddBank from "./components/AdminHome/Bank/AddBank";
 import ViewBank from "./components/AdminHome/Bank/ViewBank";
 import EditBank from "./components/AdminHome/Bank/editBank";
+import ViewVSODetails from "./components/AdminHome/VSO/ViewVSODetails";
+import AddVSODetails from "./components/AdminHome/VSO/AddVSODetails";
 
 
 function App() {
@@ -29,6 +31,9 @@ function App() {
       <Route path="/Bank_Reg_Details" element={<AddBank/>}/>
       <Route path="/All_Branches_Details" element={<ViewBank/>} />
       <Route path="/Maintain_Bank_Details" element={<EditBank/>} />
+
+      <Route path="/Add_New_VSO" element={<AddVSODetails/>} />
+      <Route path="/VSO_List" element={<ViewVSODetails/>}/>
 
       <Route path="/AddBlog" element={<AddBlogPost/>}/>
       <Route path="/view_post" element={<ViewBlogPost/>}/>
