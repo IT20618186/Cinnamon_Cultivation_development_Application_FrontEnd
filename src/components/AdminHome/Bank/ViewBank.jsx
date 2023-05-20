@@ -3,24 +3,24 @@ import axios from 'axios';
 
 export default class ViewBank extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state={
-            banks:[]
+        this.state = {
+            banks: []
         };
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.retrieveBanks();
     }
-    
-    retrieveBanks(){
-        axios.get("http://localhost:8100/bank/all_bank_details").then(res =>{
-            if(res.data.success){
+
+    retrieveBanks() {
+        axios.get("http://localhost:8100/bank/all_bank_details").then(res => {
+            if (res.data.success) {
                 this.setState({
-                    banks:res.data.existingBanks
+                    banks: res.data.existingBanks
                 });
 
                 console.log(this.state.banks);
@@ -29,19 +29,19 @@ export default class ViewBank extends Component {
     }
 
 
-    onDelete = (id) =>{
+    onDelete = (id) => {
 
-        axios.delete(`http://localhost:8100/bank/delete/${id}`).then((res) =>{
+        axios.delete(`http://localhost:8100/bank/delete/${id}`).then((res) => {
             alert("Delete Successfully");
             this.retrieveBanks();
         });
     }
 
 
-    filterData(banks, searchKey){
+    filterData(banks, searchKey) {
         const result = banks.filter((banks) =>
-        banks.bankRegID.toLowerCase().includes(searchKey) ||
-        banks.bankName.toLowerCase().includes(searchKey)
+            banks.bankRegID.toLowerCase().includes(searchKey) ||
+            banks.bankName.toLowerCase().includes(searchKey)
         )
 
         this.setState({ banks: result })
@@ -52,8 +52,8 @@ export default class ViewBank extends Component {
 
         const searchKey = e.currentTarget.value;
 
-        axios.get("http://localhost:8100/bank/all_bank_details").then(res =>{
-            if(res.data.success){
+        axios.get("http://localhost:8100/bank/all_bank_details").then(res => {
+            if (res.data.success) {
                 this.filterData(res.data.existingBanks, searchKey);
             }
         });
@@ -71,9 +71,9 @@ export default class ViewBank extends Component {
                         <span class="text">CINNAMON</span>
                     </a>
                     <ul class="side-menu top">
-                        <li class="active">
+                        <li>
                             <a href="/AdminHome">
-                            <i class="fa-solid fa-gauge fa-beat"></i>
+                                <i class="fa-solid fa-gauge"></i>
                                 <span class="text">Dashboard</span>
                             </a>
                         </li>
@@ -83,9 +83,9 @@ export default class ViewBank extends Component {
                                 <span class="text">Bank Loan</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/All_Branches_Details">
-                                <i class="fa-solid fa-briefcase"></i>
+                                <i class="fa-solid fa-briefcase fa-beat"></i>
                                 <span class="text">Banks</span>
                             </a>
                         </li>
@@ -96,25 +96,25 @@ export default class ViewBank extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/Veiw_Blogs">
+                            <a href="/Veiw_BlogPost">
                                 <i class="fa-solid fa-diamond"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
                         <li>
-                            <a href="Report_Generate_Home">
+                            <a href="/View_EstateOwners">
                                 <i class="fa-solid fa-users"></i>
-                                <span class="text">Reports</span>
+                                <span class="text">Estate Owners</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/All_Companies">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span class="text">Companies</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="side-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-gear"></i>
-                                <span class="text">Settings</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="#" class="logout">
                                 <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
@@ -135,7 +135,7 @@ export default class ViewBank extends Component {
                         <a href="/All_Branches_Details" class="nav-link">View Bank Details</a>
                         <form action="#">
                             <div class="form-input">
-                                <input type="search" placeholder="Search..." onChange={this.handleSearchArea}/>
+                                <input type="search" placeholder="Search..." onChange={this.handleSearchArea} />
                                 <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                             </div>
                         </form>
@@ -180,24 +180,24 @@ export default class ViewBank extends Component {
                                     <h3>ALL BANKS DETAILS</h3>
 
                                 </div>
-                                
+
                                 <div className="row">
                                     {/* Card View */}
-                                    {this.state.banks.map((banks,index) =>(
-                                    <div className="col-sm-6 mt-3">
-                                        <div className="card">
-                                            <div className="card-body text-center">
-                                                <p className='text-center'>Bank Registration ID : {banks.bankRegID}</p>
-                                                <h5 class="card-title">Bank : {banks.bankName}</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted">Main Branch Location : {banks.mainBranchVenue}</h6>
-                                                <br/>
-                                                <h6>Tel : {banks.bankMobile} | Email : {banks.bankEmail}</h6>
-                                                <p class="card-text">{banks.historyOfBank}</p>
-                                                <a href="#" class="card-link">Update</a>
-                                                <a href="#" class="card-link"  onClick={() =>this.onDelete(banks._id)}>Delete Details</a>
+                                    {this.state.banks.map((banks, index) => (
+                                        <div className="col-sm-6 mt-3">
+                                            <div className="card">
+                                                <div className="card-body text-center">
+                                                    <p className='text-center'>Bank Registration ID : {banks.bankRegID}</p>
+                                                    <h5 class="card-title">Bank : {banks.bankName}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Main Branch Location : {banks.mainBranchVenue}</h6>
+                                                    <br />
+                                                    <h6>Tel : {banks.bankMobile} | Email : {banks.bankEmail}</h6>
+                                                    <p class="card-text">{banks.historyOfBank}</p>
+                                                    <a href="#" class="card-link">Update</a>
+                                                    <a href="#" class="card-link" onClick={() => this.onDelete(banks._id)}>Delete Details</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     ))}
 
                                 </div>

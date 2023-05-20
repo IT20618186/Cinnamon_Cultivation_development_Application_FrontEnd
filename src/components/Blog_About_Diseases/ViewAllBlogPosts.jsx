@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class ViewBlogPost extends Component {
+class ViewAllBlogPosts extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state={
-            diseases:[]
+        this.state = {
+            diseases: []
         };
-
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.retrieveDiseases();
     }
-    
-    retrieveDiseases(){
-        axios.get("http://localhost:8100/api/diseases").then(res =>{
-            if(res.data.success){
+
+    retrieveDiseases() {
+        axios.get("http://localhost:8100/api/diseases").then(res => {
+            if (res.data.success) {
                 this.setState({
-                    diseases:res.data.existingDiseases
+                    diseases: res.data.existingPosts
                 });
 
                 console.log(this.state.diseases);
@@ -28,17 +27,16 @@ export default class ViewBlogPost extends Component {
         });
     }
 
+    onDelete = (id) => {
 
-    onDelete = (id) =>{
-
-        axios.delete(`http://localhost:8100/api/diseases/delete/${id}`).then((res) =>{
+        axios.delete(`http://localhost:8100/api/diseases/delete/${id}`).then((res) => {
             alert("Delete Successfully");
             this.retrieveDiseases();
         });
     }
 
 
-    filterData(diseases, searchKey){
+    filterData(diseases, searchKey) {
         const result = diseases.filter((diseases) =>
         diseases.name.toLowerCase().includes(searchKey) ||
         diseases.reasons.toLowerCase().includes(searchKey)
@@ -52,9 +50,9 @@ export default class ViewBlogPost extends Component {
 
         const searchKey = e.currentTarget.value;
 
-        axios.get("http://localhost:8100/api/diseases").then(res =>{
-            if(res.data.success){
-                this.filterData(res.data.existingDiseases, searchKey);
+        axios.get("http://localhost:8100/api/diseases").then(res => {
+            if (res.data.success) {
+                this.filterData(res.data.existingPosts, searchKey);
             }
         });
 
@@ -96,25 +94,25 @@ export default class ViewBlogPost extends Component {
                             </a>
                         </li>
                         <li class="active">
-                            <a href="/Veiw_Blogs">
+                            <a href="/View_All_Blogs_Details">
                                 <i class="fa-solid fa-diamond fa-beat"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
                         <li>
-                            <a href="Report_Generate_Home">
+                            <a href="/View_EstateOwners">
                                 <i class="fa-solid fa-users"></i>
-                                <span class="text">Reports</span>
+                                <span class="text">Estate Owners</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/All_Companies">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span class="text">Companies</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="side-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-gear"></i>
-                                <span class="text">Settings</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="#" class="logout">
                                 <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
@@ -126,14 +124,12 @@ export default class ViewBlogPost extends Component {
                 {/* <!-- SIDEBAR --> */}
 
 
-
                 {/* <!-- CONTENT --> */}
                 <section id="content">
                     {/* <!-- NAVBAR --> */}
                     <nav>
                         <a href="/AddBlog" class="nav-link">New Post</a>
-                        <a href="/view_Blogs" class="nav-link">Post Data</a>
-                        <a href="/user_feedback" class="nav-link">User Feedback</a>
+                        <a href="/View_All_Blogs_Details" class="nav-link">View Post Details</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." onChange={this.handleSearchArea} />
@@ -161,11 +157,11 @@ export default class ViewBlogPost extends Component {
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a href="#">Diseases</a>
+                                        <a href="#">Blogs</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">All Diseases Blog Posts</a>
+                                        <a class="active" href="#">View All Blog Post</a>
                                     </li>
                                 </ul>
                             </div>
@@ -178,16 +174,32 @@ export default class ViewBlogPost extends Component {
                         <div class="table-data">
                             <div class="order">
                                 <div class="head">
-                                    <h3>ALL POSTS DETAILS</h3>
+                                    <h3>ALL Diseases Blogs</h3>
 
                                 </div>
 
                                 <div className="row">
                                     {/* Card View */}
-                                    {this.state.diseases.map((diseases,index) =>(
-                                        <div></div>
+                                    {this.state.diseases.map((diseases, index) => (
+                                        <div className="col-sm-6 mt-3">
+                                            <div className="card">
+                                                <div className="card-body text-center">
+                                                    <img src="assets/images/blog1.jpg" class="card-img-top" alt="..." />
+                                                    <p className='text-center'>Blog No:{index + 1}</p>
+                                                    <h5 class="card-title">{diseases.name}</h5><br />
+                                                    <h6 class="card-subtitle mb-2 text-muted"><b>Reasons</b></h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">{diseases.reasons}</h6>
+                                                    <br />
+                                                    <h6><b>Treatments</b></h6>
+                                                    <h6>{diseases.treatments}</h6><br /><br />
+                                                    <p class="card-text"><a href={diseases.youtube_links}></a>GO TO Youtube</p>
+                                                    <a href="#" class="card-link">Update</a>
+                                                    <a href="#" class="card-link" onClick={() => this.onDelete(diseases._id)}>Delete Details</a>
+                                                    {/* "assets/images/blog1.jpg" */}
+                                                </div>
+                                            </div>
+                                        </div>
                                     ))}
-
                                 </div>
                             </div>
 
@@ -199,4 +211,7 @@ export default class ViewBlogPost extends Component {
             </div>
         )
     }
+
 }
+
+export default ViewAllBlogPosts;

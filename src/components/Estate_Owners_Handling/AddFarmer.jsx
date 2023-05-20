@@ -25,7 +25,7 @@ export default function AddFarmer() {
 
         axios.post("http://localhost:8100/api/stateOwner/save", newStateOwner).then(() => {
             alert("New Esatate Owner details added.");
-            window.location = "/addFarmer";
+            window.location = "/View_EstateOwners";
         }).catch((err) => {
             alert(err);
         })
@@ -40,8 +40,8 @@ export default function AddFarmer() {
         setAnnualYeild("45000kg")
     }
 
-  return (
-    <div>
+    return (
+        <div>
             <div>
                 {/* <!-- SIDEBAR --> */}
                 <section id="sidebar">
@@ -74,26 +74,26 @@ export default function AddFarmer() {
                                 <span class="text">VSO</span>
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="/Veiw_Blogs">
-                                <i class="fa-solid fa-diamond fa-beat"></i>
+                        <li>
+                            <a href="/View_All_Blogs_Details">
+                                <i class="fa-solid fa-diamond"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
+                        <li class="active">
+                            <a href="/View_EstateOwners">
+                                <i class="fa-solid fa-users fa-beat"></i>
+                                <span class="text">Estate Owners</span>
+                            </a>
+                        </li>
                         <li>
-                            <a href="Report_Generate_Home">
-                                <i class="fa-solid fa-users"></i>
-                                <span class="text">Reports</span>
+                            <a href="/All_Companies">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span class="text">Companies</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="side-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-gear"></i>
-                                <span class="text">Settings</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="#" class="logout">
                                 <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
@@ -110,9 +110,8 @@ export default function AddFarmer() {
                 <section id="content">
                     {/* <!-- NAVBAR --> */}
                     <nav>
-                        <a href="/AddBlog" class="nav-link">New Post</a>
-                        <a href="/view_Blogs" class="nav-link">Post Data</a>
-                        <a href="/user_feedback" class="nav-link">User Feedback</a>
+                        <a href="/Add_Estate_Owner" class="nav-link">New Estate Owner Registration</a>
+                        <a href="/View_EstateOwners" class="nav-link">View All EstateOwners</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." />
@@ -142,11 +141,11 @@ export default function AddFarmer() {
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a href="#">Blogs</a>
+                                        <a href="#">Estate Owners</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">New Post</a>
+                                        <a class="active" href="#">Add New Estate Owners</a>
                                     </li>
                                 </ul>
                             </div>
@@ -199,5 +198,5 @@ export default function AddFarmer() {
                 {/* <!-- CONTENT --> */}
             </div>
         </div>
-  )
+    )
 }

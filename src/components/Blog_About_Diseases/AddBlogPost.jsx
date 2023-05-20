@@ -23,7 +23,7 @@ export default function AddBlogPost() {
 
         axios.post("http://localhost:8100/api/diseases/save", newDiseases).then(() => {
             alert("New Diseases Post Added.");
-            window.location = '/view_blog';
+            window.location = '/View_All_Blogs_Details';
         }).catch((err) => {
             alert(err);
         })
@@ -72,25 +72,25 @@ export default function AddBlogPost() {
                             </a>
                         </li>
                         <li class="active">
-                            <a href="/Veiw_Blogs">
+                            <a href="/View_All_Blogs_Details">
                                 <i class="fa-solid fa-diamond fa-beat"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
                         <li>
-                            <a href="Report_Generate_Home">
+                            <a href="/View_EstateOwners">
                                 <i class="fa-solid fa-users"></i>
-                                <span class="text">Reports</span>
+                                <span class="text">Estate Owners</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/All_Companies">
+                                <i class="fa-solid fa-leaf"></i>
+                                <span class="text">Companies</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="side-menu">
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-gear"></i>
-                                <span class="text">Settings</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="#" class="logout">
                                 <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
@@ -108,8 +108,7 @@ export default function AddBlogPost() {
                     {/* <!-- NAVBAR --> */}
                     <nav>
                         <a href="/AddBlog" class="nav-link">New Post</a>
-                        <a href="/view_Blogs" class="nav-link">Post Data</a>
-                        <a href="/user_feedback" class="nav-link">User Feedback</a>
+                        <a href="/View_All_Blogs_Details" class="nav-link">View Post Details</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." />
@@ -135,7 +134,7 @@ export default function AddBlogPost() {
                                 <h1>Blog Posts</h1>
                                 <ul class="breadcrumb">
                                     <li>
-                                        <a href="#">Dashboard</a>
+                                        <a href="/AdminHome" >Dashboard</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
@@ -143,7 +142,7 @@ export default function AddBlogPost() {
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">New Post</a>
+                                        <a class="active" href="#">View All Blog Post</a>
                                     </li>
                                 </ul>
                             </div>
@@ -173,7 +172,7 @@ export default function AddBlogPost() {
                                                 <textarea type="text" class="form-control" id="inputText" name='treatments' rows="3" value={treatments} onChange={(e) => { setTreatments(e.target.value); }} />
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="inputEmail" class="form-label">Bank Email</label>
+                                                <label for="inputEmail" class="form-label">Give the Youtube Link :</label>
                                                 <input type="text" class="form-control" id="inputText" name='youtube_links' value={youtube_links} onChange={(e) => { setYoutube_links(e.target.value); }} />
                                             </div>
                                             <div class="col-12">

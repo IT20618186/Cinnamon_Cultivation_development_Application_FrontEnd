@@ -1,51 +1,48 @@
-import axios from 'axios';
 import React, { Component } from 'react';
+import axios from 'axios';
 
-export default class ViewVSODetails extends Component {
+class EstateOwnersDetails extends Component {
+
     constructor(props) {
         super(props);
 
         this.state = {
-            vsos: []
+            stateowners: []
         };
-
     }
 
     componentDidMount() {
-        this.retrieveVSOs();
+        this.retrieveStateowners();
     }
 
-    retrieveVSOs() {
-        axios.get("http://localhost:8100/VSO/all_vso_details").then(res => {
+    retrieveStateowners() {
+        axios.get("http://localhost:8100/api/stateOwners").then(res => {
             if (res.data.success) {
                 this.setState({
-                    vsos: res.data.existingVSOs
+                    stateowners: res.data.existingPosts
                 });
 
-                console.log(this.state.vsos);
+                console.log(this.state.stateowners);
             }
         });
     }
 
-
     onDelete = (id) => {
 
-        axios.delete(`http://localhost:8100/VSO/delete/${id}`).then((res) => {
+        axios.delete(`http://localhost:8100/api/stateOwner/delete/${id}`).then((res) => {
             alert("Delete Successfully");
-            this.retrieveVSOs();
+            this.retrieveStateowners();
         });
     }
 
 
-    filterData(vsos, searchKey) {
-        const result = vsos.filter((vsos) =>
-            vsos.vsoID.toLowerCase().includes(searchKey) ||
-            vsos.vso_FullName.toLowerCase().includes(searchKey) ||
-            vsos.vso_District.toLowerCase().includes(searchKey) ||
-            vsos.vso_Province.toLowerCase().includes(searchKey)
+    filterData(stateowners, searchKey) {
+        const result = stateowners.filter((stateowners) =>
+        stateowners.name.toLowerCase().includes(searchKey) ||
+        stateowners.district.toLowerCase().includes(searchKey)
         )
 
-        this.setState({ vsos: result })
+        this.setState({ stateowners: result })
     }
 
 
@@ -53,9 +50,9 @@ export default class ViewVSODetails extends Component {
 
         const searchKey = e.currentTarget.value;
 
-        axios.get("http://localhost:8100/VSO/all_vso_details").then(res => {
+        axios.get("http://localhost:8100/api/stateOwners").then(res => {
             if (res.data.success) {
-                this.filterData(res.data.existingVSOs, searchKey);
+                this.filterData(res.data.existingPosts, searchKey);
             }
         });
 
@@ -90,21 +87,21 @@ export default class ViewVSODetails extends Component {
                                 <span class="text">Banks</span>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="/VSO_List">
-                                <i class="fa-solid fa-people-roof fa-beat"></i>
+                                <i class="fa-solid fa-people-roof"></i>
                                 <span class="text">VSO</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/Veiw_BlogPost">
+                            <a href="/View_All_Blogs_Details">
                                 <i class="fa-solid fa-diamond"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/View_EstateOwners">
-                                <i class="fa-solid fa-users"></i>
+                                <i class="fa-solid fa-users fa-beat"></i>
                                 <span class="text">Estate Owners</span>
                             </a>
                         </li>
@@ -132,8 +129,8 @@ export default class ViewVSODetails extends Component {
                 <section id="content">
                     {/* <!-- NAVBAR --> */}
                     <nav>
-                        <a href="/Add_New_VSO" class="nav-link">New VSO Registration</a>
-                        <a href="/VSO_List" class="nav-link">View VSO Details</a>
+                        <a href="/Add_Estate_Owner" class="nav-link">New Estate Owner Registration</a>
+                        <a href="/View_EstateOwners" class="nav-link">View All EstateOwners</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." onChange={this.handleSearchArea} />
@@ -157,15 +154,15 @@ export default class ViewVSODetails extends Component {
                                 <h1>Dashboard</h1>
                                 <ul class="breadcrumb">
                                     <li>
-                                        <a href="/AdminHome" >Dashboard</a>
+                                        <a href="#">Dashboard</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a href="#">VSO</a>
+                                        <a href="#">Estate Owners</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">VSO List</a>
+                                        <a class="active" href="#">View all Estate Owners</a>
                                     </li>
                                 </ul>
                             </div>
@@ -178,26 +175,25 @@ export default class ViewVSODetails extends Component {
                         <div class="table-data">
                             <div class="order">
                                 <div class="head">
-                                    <h3>ALL VSO DETAILS</h3>
+                                    <h3>ALL BANKS DETAILS</h3>
 
                                 </div>
 
                                 <div className="row">
                                     {/* Card View */}
-                                    {this.state.vsos.map((vsos, index) => (
+                                    {this.state.stateowners.map((stateowners,index) => (
                                         <div className="col-sm-6 mt-3">
                                             <div className="card">
                                                 <div className="card-body text-center">
-                                                    <p className='text-center'>VSO's Registration ID : {vsos.vsoID}</p>
-                                                    <h5 class="card-title">VSO's Full Name : {vsos.vso_FullName}</h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                                    <p className='text-center'>Estate Owner's ID : ES430{index+1} </p>
+                                                    <h5 class="card-title">Name : {stateowners.name}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">NIC : {stateowners.annualYeild}</h6>
                                                     <br />
-                                                    <h6>Tel : {vsos.vso_PhoneNumber} | Email : {vsos.vso_Email}</h6>
-                                                    <p class="card-text">Work Area : {vsos.vso_WorkArea}</p>
-                                                    <p class="card-text">District : {vsos.vso_District}</p>
-                                                    <p class="card-text">Province : {vsos.vso_Province}</p>
+                                                    <h6>NIC : {stateowners.NIC} | Tel : {stateowners.telephoneNo}</h6><br/>
+                                                    <p class="card-text">{stateowners.address}</p>
+                                                    <p class="card-text">{stateowners.district}</p>
                                                     <a href="#" class="card-link">Update</a>
-                                                    <a href="#" class="card-link" onClick={() => this.onDelete(vsos._id)}>Delete VSO</a>
+                                                    <a href="#" class="card-link" onClick={() => this.onDelete(stateowners._id)}>Delete Details</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -214,4 +210,7 @@ export default class ViewVSODetails extends Component {
             </div>
         )
     }
+
 }
+
+export default EstateOwnersDetails;

@@ -30,9 +30,11 @@ export default function Login() {
 							className={styles.input}
 						/>
 						{/* {error && <div className={styles.error_msg}>{error}</div>} */}
+						<Link to="/AdminHome">
 						<button type="submit" className={styles.green_btn}>
 							Sing In
 						</button>
+						</Link>
 					</form>
 				</div>
 				<div className={styles.right}>

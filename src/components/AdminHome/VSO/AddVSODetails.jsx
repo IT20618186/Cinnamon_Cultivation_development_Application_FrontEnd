@@ -15,7 +15,7 @@ export default function AddVSODetails() {
   function sendData(e) {
 
     e.preventDefault();
-   
+
     const newVSO = {
       vsoID,
       vso_FullName,
@@ -82,25 +82,25 @@ export default function AddVSODetails() {
               </a>
             </li>
             <li>
-              <a href="/Veiw_Blogs">
+              <a href="/Veiw_BlogPost">
                 <i class="fa-solid fa-diamond"></i>
                 <span class="text">Blogs</span>
               </a>
             </li>
             <li>
-              <a href="Report_Generate_Home">
+              <a href="/View_EstateOwners">
                 <i class="fa-solid fa-users"></i>
-                <span class="text">Reports</span>
+                <span class="text">Estate Owners</span>
+              </a>
+            </li>
+            <li>
+              <a href="/All_Companies">
+                <i class="fa-solid fa-leaf"></i>
+                <span class="text">Companies</span>
               </a>
             </li>
           </ul>
           <ul class="side-menu">
-            <li>
-              <a href="#">
-                <i class="fa-solid fa-gear"></i>
-                <span class="text">Settings</span>
-              </a>
-            </li>
             <li>
               <a href="#" class="logout">
                 <i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
