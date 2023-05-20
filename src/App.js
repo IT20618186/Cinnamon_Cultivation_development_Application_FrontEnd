@@ -19,6 +19,7 @@ import BlogPostViewHome from "./components/Estate_Owners_Handling/BlogPostViewHo
 import AddFarmer from "./components/Estate_Owners_Handling/AddFarmer";
 import EstateOwnersDetails from "./components/Estate_Owners_Handling/EstateOwnersDetails";
 import ViewAllBlogPosts from "./components/Blog_About_Diseases/ViewAllBlogPosts";
+import ReportVSO from "./components/AdminHome/VSO/ReportVSO";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 
       <Route path="/Add_New_VSO" element={<AddVSODetails/>} />
       <Route path="/VSO_List" element={<ViewVSODetails/>}/>
+      <Route path="/Report_VSO" element={<ReportVSO/>}/>
 
       <Route path="/Farmer_Home" element={<FarmerHome/>}/>
       <Route path="/Request_Harvest_List" element={<RequestHarvestList/>}/>

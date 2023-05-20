@@ -169,7 +169,7 @@ export default class ViewVSODetails extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            <a href="#" class="btn-download">
+                            <a href="/Report_VSO" class="btn-download">
                                 <i class='bx bxs-cloud-download' ></i>
                                 <span class="text">Download PDF</span>
                             </a>
