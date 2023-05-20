@@ -20,6 +20,8 @@ import AddFarmer from "./components/Estate_Owners_Handling/AddFarmer";
 import EstateOwnersDetails from "./components/Estate_Owners_Handling/EstateOwnersDetails";
 import ViewAllBlogPosts from "./components/Blog_About_Diseases/ViewAllBlogPosts";
 import ReportVSO from "./components/AdminHome/VSO/ReportVSO";
+import ReportBank from "./components/AdminHome/Bank/ReportBank";
+import ReportFarmer from "./components/Estate_Owners_Handling/ReportFarmer";
 
 
 function App() {
@@ -35,6 +37,7 @@ function App() {
       <Route path="/Bank_Reg_Details" element={<AddBank/>}/>
       <Route path="/All_Branches_Details" element={<ViewBank/>} />
       <Route path="/Maintain_Bank_Details" element={<EditBank/>} />
+      <Route path="/Report_Bank" element={<ReportBank/>}/>
 
       <Route path="/Add_New_VSO" element={<AddVSODetails/>} />
       <Route path="/VSO_List" element={<ViewVSODetails/>}/>
@@ -46,6 +49,7 @@ function App() {
       <Route path="/Cinnamon_blog" element={<BlogPostViewHome/>}/>
       <Route path="/Add_Estate_Owner" element={<AddFarmer/>}/>
       <Route path="/View_EstateOwners" element={<EstateOwnersDetails/>}/>
+      <Route path="/Report_EstateOwner" element={<ReportFarmer/>}/>
 
       <Route path="/AddBlog" element={<AddBlogPost/>}/>
       <Route path="/update_post" element={<UpdateBlogPost/>}/>

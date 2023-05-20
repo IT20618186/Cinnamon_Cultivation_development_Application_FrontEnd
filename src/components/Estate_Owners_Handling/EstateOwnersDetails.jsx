@@ -166,7 +166,7 @@ class EstateOwnersDetails extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            <a href="#" class="btn-download">
+                            <a href="/Report_EstateOwner" class="btn-download">
                                 <i class='bx bxs-cloud-download' ></i>
                                 <span class="text">Download PDF</span>
                             </a>
@@ -187,7 +187,7 @@ class EstateOwnersDetails extends Component {
                                                 <div className="card-body text-center">
                                                     <p className='text-center'>Estate Owner's ID : ES430{index+1} </p>
                                                     <h5 class="card-title">Name : {stateowners.name}</h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted">NIC : {stateowners.annualYeild}</h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Annual Yeild : {stateowners.annualYeild}</h6>
                                                     <br />
                                                     <h6>NIC : {stateowners.NIC} | Tel : {stateowners.telephoneNo}</h6><br/>
                                                     <p class="card-text">{stateowners.address}</p>

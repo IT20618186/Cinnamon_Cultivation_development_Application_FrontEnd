@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
 import axios from 'axios';
+import React, { Component } from 'react';
+import ReactToPrint from 'react-to-print';
+import { render } from 'react-dom';
 
-export default class ViewBank extends Component {
+class ReportBank extends Component {
 
     constructor(props) {
         super(props);
@@ -27,16 +29,6 @@ export default class ViewBank extends Component {
             }
         });
     }
-
-
-    onDelete = (id) => {
-
-        axios.delete(`http://localhost:8100/bank/delete/${id}`).then((res) => {
-            alert("Delete Successfully");
-            this.retrieveBanks();
-        });
-    }
-
 
     filterData(banks, searchKey) {
         const result = banks.filter((banks) =>
@@ -168,13 +160,20 @@ export default class ViewBank extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            <a href="/Report_Bank" class="btn-download">
-                                <i class='bx bxs-cloud-download' ></i>
-                                <span class="text">Download PDF</span>
-                            </a>
+                            <ReactToPrint
+                                trigger={() => {
+                                    return <a class="btn-download">
+                                        <i class='bx bxs-cloud-download' ></i>
+                                        <span class="text">Download PDF</span>
+                                    </a>
+                                }}
+                                content={() => this.componentRef}
+                                documentTitle='Bank Details Report'
+                                pageStyle="print"
+                            />
                         </div>
 
-                        <div class="table-data">
+                        <div class="table-data" ref={el=>(this.componentRef=el)}S>
                             <div class="order">
                                 <div class="head">
                                     <h3>ALL BANKS DETAILS</h3>
@@ -193,8 +192,6 @@ export default class ViewBank extends Component {
                                                     <br />
                                                     <h6>Tel : {banks.bankMobile} | Email : {banks.bankEmail}</h6>
                                                     <p class="card-text">{banks.historyOfBank}</p>
-                                                    <a href="#" class="card-link">Update</a>
-                                                    <a href="#" class="card-link" onClick={() => this.onDelete(banks._id)}>Delete Details</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,4 +208,7 @@ export default class ViewBank extends Component {
             </div>
         )
     }
+
 }
+
+export default ReportBank;

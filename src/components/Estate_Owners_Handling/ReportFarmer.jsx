@@ -1,50 +1,49 @@
-import React, { Component } from 'react';
 import axios from 'axios';
+import React, { Component } from 'react';
+import ReactToPrint from 'react-to-print';
 
-export default class ViewBank extends Component {
+class ReportFarmer extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            banks: []
+            stateowners: []
         };
-
     }
 
     componentDidMount() {
-        this.retrieveBanks();
+        this.retrieveStateowners();
     }
 
-    retrieveBanks() {
-        axios.get("http://localhost:8100/bank/all_bank_details").then(res => {
+    retrieveStateowners() {
+        axios.get("http://localhost:8100/api/stateOwners").then(res => {
             if (res.data.success) {
                 this.setState({
-                    banks: res.data.existingBanks
+                    stateowners: res.data.existingPosts
                 });
 
-                console.log(this.state.banks);
+                console.log(this.state.stateowners);
             }
         });
     }
 
-
     onDelete = (id) => {
 
-        axios.delete(`http://localhost:8100/bank/delete/${id}`).then((res) => {
+        axios.delete(`http://localhost:8100/api/stateOwner/delete/${id}`).then((res) => {
             alert("Delete Successfully");
-            this.retrieveBanks();
+            this.retrieveStateowners();
         });
     }
 
 
-    filterData(banks, searchKey) {
-        const result = banks.filter((banks) =>
-            banks.bankRegID.toLowerCase().includes(searchKey) ||
-            banks.bankName.toLowerCase().includes(searchKey)
+    filterData(stateowners, searchKey) {
+        const result = stateowners.filter((stateowners) =>
+        stateowners.name.toLowerCase().includes(searchKey) ||
+        stateowners.district.toLowerCase().includes(searchKey)
         )
 
-        this.setState({ banks: result })
+        this.setState({ stateowners: result })
     }
 
 
@@ -52,9 +51,9 @@ export default class ViewBank extends Component {
 
         const searchKey = e.currentTarget.value;
 
-        axios.get("http://localhost:8100/bank/all_bank_details").then(res => {
+        axios.get("http://localhost:8100/api/stateOwners").then(res => {
             if (res.data.success) {
-                this.filterData(res.data.existingBanks, searchKey);
+                this.filterData(res.data.existingPosts, searchKey);
             }
         });
 
@@ -83,9 +82,9 @@ export default class ViewBank extends Component {
                                 <span class="text">Bank Loan</span>
                             </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="/All_Branches_Details">
-                                <i class="fa-solid fa-briefcase fa-beat"></i>
+                                <i class="fa-solid fa-briefcase"></i>
                                 <span class="text">Banks</span>
                             </a>
                         </li>
@@ -96,14 +95,14 @@ export default class ViewBank extends Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/Veiw_BlogPost">
+                            <a href="/View_All_Blogs_Details">
                                 <i class="fa-solid fa-diamond"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/View_EstateOwners">
-                                <i class="fa-solid fa-users"></i>
+                                <i class="fa-solid fa-users fa-beat"></i>
                                 <span class="text">Estate Owners</span>
                             </a>
                         </li>
@@ -131,8 +130,8 @@ export default class ViewBank extends Component {
                 <section id="content">
                     {/* <!-- NAVBAR --> */}
                     <nav>
-                        <a href="/Bank_Reg_Details" class="nav-link">Bank Details Registration</a>
-                        <a href="/All_Branches_Details" class="nav-link">View Bank Details</a>
+                        <a href="/Add_Estate_Owner" class="nav-link">New Estate Owner Registration</a>
+                        <a href="/View_EstateOwners" class="nav-link">View All EstateOwners</a>
                         <form action="#">
                             <div class="form-input">
                                 <input type="search" placeholder="Search..." onChange={this.handleSearchArea} />
@@ -156,25 +155,32 @@ export default class ViewBank extends Component {
                                 <h1>Dashboard</h1>
                                 <ul class="breadcrumb">
                                     <li>
-                                        <a href="/AdminHome" >Dashboard</a>
+                                        <a href="#">Dashboard</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a href="#">Bank</a>
+                                        <a href="#">Estate Owners</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">Update Bank Details</a>
+                                        <a class="active" href="#">View all Estate Owners</a>
                                     </li>
                                 </ul>
                             </div>
-                            <a href="/Report_Bank" class="btn-download">
-                                <i class='bx bxs-cloud-download' ></i>
-                                <span class="text">Download PDF</span>
-                            </a>
+                            <ReactToPrint
+                                trigger={() => {
+                                    return <a class="btn-download">
+                                        <i class='bx bxs-cloud-download' ></i>
+                                        <span class="text">Download PDF</span>
+                                    </a>
+                                }}
+                                content={() => this.componentRef}
+                                documentTitle='Estate Owner Details Report'
+                                pageStyle="print"
+                            />
                         </div>
 
-                        <div class="table-data">
+                        <div class="table-data" ref={el=>(this.componentRef=el)}>
                             <div class="order">
                                 <div class="head">
                                     <h3>ALL BANKS DETAILS</h3>
@@ -183,18 +189,17 @@ export default class ViewBank extends Component {
 
                                 <div className="row">
                                     {/* Card View */}
-                                    {this.state.banks.map((banks, index) => (
+                                    {this.state.stateowners.map((stateowners,index) => (
                                         <div className="col-sm-6 mt-3">
                                             <div className="card">
                                                 <div className="card-body text-center">
-                                                    <p className='text-center'>Bank Registration ID : {banks.bankRegID}</p>
-                                                    <h5 class="card-title">Bank : {banks.bankName}</h5>
-                                                    <h6 class="card-subtitle mb-2 text-muted">Main Branch Location : {banks.mainBranchVenue}</h6>
+                                                    <p className='text-center'>Estate Owner's ID : ES430{index+1} </p>
+                                                    <h5 class="card-title">Name : {stateowners.name}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Annual Yeild : {stateowners.annualYeild}</h6>
                                                     <br />
-                                                    <h6>Tel : {banks.bankMobile} | Email : {banks.bankEmail}</h6>
-                                                    <p class="card-text">{banks.historyOfBank}</p>
-                                                    <a href="#" class="card-link">Update</a>
-                                                    <a href="#" class="card-link" onClick={() => this.onDelete(banks._id)}>Delete Details</a>
+                                                    <h6>NIC : {stateowners.NIC} | Tel : {stateowners.telephoneNo}</h6><br/>
+                                                    <p class="card-text">{stateowners.address}</p>
+                                                    <p class="card-text">{stateowners.district}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,4 +216,7 @@ export default class ViewBank extends Component {
             </div>
         )
     }
+
 }
+
+export default ReportFarmer;
