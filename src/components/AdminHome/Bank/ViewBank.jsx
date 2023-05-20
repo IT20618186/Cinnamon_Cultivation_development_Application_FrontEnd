@@ -180,31 +180,6 @@ export default class ViewBank extends Component {
                                     <h3>ALL BANKS DETAILS</h3>
 
                                 </div>
-                                {/* <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Subject</th>
-                                            <th>Message</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.state.contacts.map((contacts, index) => (
-                                            <tr>
-                                                <td>{contacts.name}</td>
-                                                <td>{contacts.email}</td>
-                                                <td>{contacts.subject}</td>
-                                                <td>{contacts.message}</td>
-                                                <td><a className='btn btn-danger btn-sm' href="#" onClick={() => this.onDelete(contacts._id)}>
-                                                    <i className='far fa-trash-alt'></i>&nbsp; Delete
-                                                </a>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table> */}
                                 
                                 <div className="row">
                                     {/* Card View */}

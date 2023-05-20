@@ -14,6 +14,12 @@ import ViewBank from "./components/AdminHome/Bank/ViewBank";
 import EditBank from "./components/AdminHome/Bank/editBank";
 import ViewVSODetails from "./components/AdminHome/VSO/ViewVSODetails";
 import AddVSODetails from "./components/AdminHome/VSO/AddVSODetails";
+import FarmerHome from "./components/Estate_Owners_Handling/FarmerHome";
+import RequestHarvestList from "./components/Estate_Owners_Handling/RequestHarvestList";
+import ApplyLoan from "./components/Estate_Owners_Handling/ApplyLoan";
+import BlogPostViewHome from "./components/Estate_Owners_Handling/BlogPostViewHome";
+import ViewBlogPostInHome from "./components/Blog_About_Diseases/ViewBlogPostInHome";
+import AddFarmer from "./components/Estate_Owners_Handling/AddFarmer";
 
 
 function App() {
@@ -35,9 +41,16 @@ function App() {
       <Route path="/Add_New_VSO" element={<AddVSODetails/>} />
       <Route path="/VSO_List" element={<ViewVSODetails/>}/>
 
+      <Route path="/Farmer_Home" element={<FarmerHome/>}/>
+      <Route path="/Request_Harvest_List" element={<RequestHarvestList/>}/>
+      <Route path="/Apply_Bank_Loan" element={<ApplyLoan/>}/>
+      <Route path="/Cinnamon_blog" element={<BlogPostViewHome/>}/>
+      <Route path="/Add_Estate_Owner" element={<AddFarmer/>}/>
+
       <Route path="/AddBlog" element={<AddBlogPost/>}/>
-      <Route path="/view_post" element={<ViewBlogPost/>}/>
+      <Route path="/view_Blogs" element={<ViewBlogPost/>}/>
       <Route path="/update_post" element={<UpdateBlogPost/>}/>
+      <Route path="/all_Blogs" element={<ViewBlogPostInHome/>}/>
     </Routes>
   );
 }

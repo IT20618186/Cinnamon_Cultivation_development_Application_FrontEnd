@@ -1,8 +1,68 @@
-import React from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-export default function ViewBlogPost() {
-    return (
-        <div>
+export default class ViewBlogPost extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state={
+            diseases:[]
+        };
+
+    }
+
+    componentDidMount(){
+        this.retrieveDiseases();
+    }
+    
+    retrieveDiseases(){
+        axios.get("http://localhost:8100/api/diseases").then(res =>{
+            if(res.data.success){
+                this.setState({
+                    diseases:res.data.existingDiseases
+                });
+
+                console.log(this.state.diseases);
+            }
+        });
+    }
+
+
+    onDelete = (id) =>{
+
+        axios.delete(`http://localhost:8100/api/diseases/delete/${id}`).then((res) =>{
+            alert("Delete Successfully");
+            this.retrieveDiseases();
+        });
+    }
+
+
+    filterData(diseases, searchKey){
+        const result = diseases.filter((diseases) =>
+        diseases.name.toLowerCase().includes(searchKey) ||
+        diseases.reasons.toLowerCase().includes(searchKey)
+        )
+
+        this.setState({ diseases: result })
+    }
+
+
+    handleSearchArea = (e) => {
+
+        const searchKey = e.currentTarget.value;
+
+        axios.get("http://localhost:8100/api/diseases").then(res =>{
+            if(res.data.success){
+                this.filterData(res.data.existingDiseases, searchKey);
+            }
+        });
+
+    }
+
+
+    render() {
+        return (
             <div>
                 {/* <!-- SIDEBAR --> */}
                 <section id="sidebar">
@@ -11,9 +71,9 @@ export default function ViewBlogPost() {
                         <span class="text">CINNAMON</span>
                     </a>
                     <ul class="side-menu top">
-                        <li class="active">
+                        <li>
                             <a href="/AdminHome">
-                            <i class="fa-solid fa-gauge fa-beat"></i>
+                                <i class="fa-solid fa-gauge"></i>
                                 <span class="text">Dashboard</span>
                             </a>
                         </li>
@@ -24,7 +84,7 @@ export default function ViewBlogPost() {
                             </a>
                         </li>
                         <li>
-                            <a href="/Bank_Reg_Details">
+                            <a href="/All_Branches_Details">
                                 <i class="fa-solid fa-briefcase"></i>
                                 <span class="text">Banks</span>
                             </a>
@@ -35,9 +95,9 @@ export default function ViewBlogPost() {
                                 <span class="text">VSO</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/Veiw_Blogs">
-                                <i class="fa-solid fa-diamond"></i>
+                                <i class="fa-solid fa-diamond fa-beat"></i>
                                 <span class="text">Blogs</span>
                             </a>
                         </li>
@@ -72,16 +132,14 @@ export default function ViewBlogPost() {
                     {/* <!-- NAVBAR --> */}
                     <nav>
                         <a href="/AddBlog" class="nav-link">New Post</a>
-                        <a href="/view_post" class="nav-link">Post Data</a>
+                        <a href="/view_Blogs" class="nav-link">Post Data</a>
                         <a href="/user_feedback" class="nav-link">User Feedback</a>
                         <form action="#">
                             <div class="form-input">
-                                <input type="search" placeholder="Search..." />
-                                <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+                                <input type="search" placeholder="Search..." onChange={this.handleSearchArea} />
+                                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                             </div>
                         </form>
-                        {/* <input type="checkbox" id="switch-mode" hidden />
-                        <label for="switch-mode" class="switch-mode"></label> */}
                         <a href="#" class="notification">
                             <i class='bx bxs-bell' ></i>
                             <span class="num">10</span>
@@ -96,18 +154,18 @@ export default function ViewBlogPost() {
                     <main>
                         <div class="head-title">
                             <div class="left">
-                                <h1>Blog Posts</h1>
+                                <h1>Dashboard</h1>
                                 <ul class="breadcrumb">
                                     <li>
-                                        <a href="#">Dashboard</a>
+                                        <a href="/AdminHome" >Dashboard</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a href="#">Blogs</a>
+                                        <a href="#">Diseases</a>
                                     </li>
                                     <li><i class='bx bx-chevron-right' ></i></li>
                                     <li>
-                                        <a class="active" href="#">View Post</a>
+                                        <a class="active" href="#">All Diseases Blog Posts</a>
                                     </li>
                                 </ul>
                             </div>
@@ -120,45 +178,17 @@ export default function ViewBlogPost() {
                         <div class="table-data">
                             <div class="order">
                                 <div class="head">
-                                    <h3>ALL POST DETAILS</h3>
+                                    <h3>ALL POSTS DETAILS</h3>
 
                                 </div>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Youtube Link</th>
-                                            <th>Reasons</th>
-                                            <th>Treatments</th>
-                                            <th>Related Image</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            {/* <td>
-                                            <img src="assets/images/people.png" />
-                                            <p>John Doe</p>
-                                        </td>
-                                        <td>01-10-2021</td>
-                                        <td><span class="status completed">Completed</span></td>
-                                        <td>This test Field</td>
-                                        <td>This test Field</td>
-                                        <td>This test Field</td> */}
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                    <button type="button" class="btn btn-warning">Edit</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+                                <div className="row">
+                                    {/* Card View */}
+                                    {this.state.diseases.map((diseases,index) =>(
+                                        <div></div>
+                                    ))}
+
+                                </div>
                             </div>
 
                         </div>
@@ -167,6 +197,6 @@ export default function ViewBlogPost() {
                 </section>
                 {/* <!-- CONTENT --> */}
             </div>
-        </div>
-    )
+        )
+    }
 }
