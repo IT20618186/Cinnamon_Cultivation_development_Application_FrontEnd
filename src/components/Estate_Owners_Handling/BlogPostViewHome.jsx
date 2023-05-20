@@ -1,7 +1,34 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class BlogPostViewHome extends Component {
+class BlogPostViewHome extends Component {
+
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            diseases: []
+        };
+    }
+
+    componentDidMount() {
+        this.retrieveDiseases();
+    }
+
+    retrieveDiseases() {
+        axios.get("http://localhost:8100/api/diseases").then(res => {
+            if (res.data.success) {
+                this.setState({
+                    diseases: res.data.existingPosts
+                });
+
+                console.log(this.state.diseases);
+            }
+        });
+    }
+
+
     render() {
         return (
             <div>
@@ -80,7 +107,46 @@ export default class BlogPostViewHome extends Component {
                     </div>
                 </section>
                 {/* ***** Main Banner Area End ***** */}
+
+
+                <div className="container">
+                <div class="table-data">
+                            <div class="order">
+                                <div class="head">
+                                    <h3>ALL Diseases Blogs</h3>
+
+                                </div>
+
+                                <div className="row">
+                                    {/* Card View */}
+                                    {this.state.diseases.map((diseases, index) => (
+                                        <div className="col-sm-6 mt-3">
+                                            <div className="card">
+                                                <div className="card-body text-center">
+                                                    <img src="assets/images/blog1.jpg" class="card-img-top" alt="..." />
+                                                    <p className='text-center'>Blog No:{index + 1}</p>
+                                                    <h5 class="card-title">{diseases.name}</h5><br />
+                                                    <h6 class="card-subtitle mb-2 text-muted"><b>Reasons</b></h6>
+                                                    <h6 class="card-subtitle mb-2 text-muted">{diseases.reasons}</h6>
+                                                    <br />
+                                                    <h6><b>Treatments</b></h6>
+                                                    <h6>{diseases.treatments}</h6><br /><br />
+                                                    <p class="card-text"><a href={diseases.youtube_links}></a>GO TO Youtube</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+
             </div>
+
+            
         )
     }
 }
+
+export default BlogPostViewHome;
