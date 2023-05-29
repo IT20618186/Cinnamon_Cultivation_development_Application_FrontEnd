@@ -22,6 +22,10 @@ import ViewAllBlogPosts from "./components/Blog_About_Diseases/ViewAllBlogPosts"
 import ReportVSO from "./components/AdminHome/VSO/ReportVSO";
 import ReportBank from "./components/AdminHome/Bank/ReportBank";
 import ReportFarmer from "./components/Estate_Owners_Handling/ReportFarmer";
+import ViewCompany from "./components/Company_Handling/viewCompany";
+import AddCompany from "./components/Company_Handling/AddCompany";
+import ReportCompanyReqs from "./components/Company_Handling/ReportCompanyReqs";
+import EditCompany from "./components/Company_Handling/EditCompany";
 
 
 function App() {
@@ -54,6 +58,12 @@ function App() {
       <Route path="/AddBlog" element={<AddBlogPost/>}/>
       <Route path="/update_post" element={<UpdateBlogPost/>}/>
       <Route path="/View_All_Blogs_Details" element={<ViewAllBlogPosts/>}/>
+
+      <Route path="/All_Companies" element={<ViewCompany/>}/>
+      <Route path="/new_CompanyReq" element={<AddCompany/>}/>
+      <Route path="/Report_Company" element={<ReportCompanyReqs/>}/>
+      <Route path="/Edit_Company_Request/:id" element={<EditCompany/>}/>
+
     </Routes>
   );
 }

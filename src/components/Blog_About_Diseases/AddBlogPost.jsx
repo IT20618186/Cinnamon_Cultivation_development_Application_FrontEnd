@@ -176,7 +176,7 @@ export default function AddBlogPost() {
                                                 <input type="text" class="form-control" id="inputText" name='youtube_links' value={youtube_links} onChange={(e) => { setYoutube_links(e.target.value); }} />
                                             </div>
                                             <div class="col-12">
-                                                <button type="submit" class="btn btn-success">Register Bank</button>
+                                                <button type="submit" class="btn btn-success">Add Post</button> &nbsp;
                                                 <button onClick={() => { demofill() }} className="btn btn-info ml-3">DEMO</button>
                                             </div>
                                             {/* </form> */}
